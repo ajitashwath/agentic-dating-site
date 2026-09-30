@@ -227,3 +227,6 @@ frontend/node_modules/
 __pycache__/
 .env
 backend/data/cache/
+
+# the Python template ignores lib/, but frontend/lib holds source files the build needs
+!frontend/lib/
