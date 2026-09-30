@@ -17,7 +17,8 @@ from services.identity import check_identity  # noqa: E402
 
 BASE = Path(__file__).parent
 DATA = Path(os.getenv("DATA_DIR", BASE / "data"))
-DB = Path(os.getenv("DB_PATH", BASE / "live.db"))
+# Vercel functions can only write to /tmp, so people added through /create are kept there (they reset on cold starts).
+DB = Path(os.getenv("DB_PATH") or ("/tmp/live.db" if os.getenv("VERCEL") else BASE / "live.db"))
 
 app = FastAPI(title="Agent Dating")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])

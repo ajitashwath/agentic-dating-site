@@ -46,3 +46,4 @@ CANDIDATES = [
     ("Emma Grede", L + "emmagrede", I + "emmagrede/"),
     ("Sara Blakely", L + "sarablakely27", I + "sarablakely/"),
 ]
+

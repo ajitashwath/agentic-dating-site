@@ -69,3 +69,7 @@ Then Gemini turns the data into a structured profile using the same tag vocabula
 ## About the people
 
 Half are lesser known big tech people and tech creators, half are well known public figures. Each LinkedIn and Instagram pair was checked against search results showing both profiles for the same person before going into `candidates.py`, and the pipeline verifies them again from the scraped data. Several handles written from memory turned out to be wrong or dead during that check and were corrected. Satya Nadella was dropped because the Instagram account under his name is an empty stub. Only public accounts are used.
+
+## Deploy on Vercel
+
+`vercel.json` defines two services in one project: `backend` (FastAPI, `backend/`) and `frontend` (Next.js, `frontend/`). `/api/*` is rewritten to the backend and everything else to the frontend, so the site and API share one domain and the frontend calls `/api/...` on its own origin. Set `GEMINI_API_KEY`, `GEMINI_MODELS` and `APIFY_API_TOKEN` as project environment variables. Do not set `NEXT_PUBLIC_API_URL` on Vercel. People added through `/create` live in `/tmp` on Vercel, so they reset on cold starts, while the precomputed demo data ships with the backend. Test locally with `vercel dev`.
