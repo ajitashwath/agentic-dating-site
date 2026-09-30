@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ember: #fc5000;
+  --plasma: #524ae9;
+  --sulfur: #f5f28e;
+  --limestone: #f7f6f2;
+  --pumice: #e2e2df;
+  --obsidian: #070607;
+}
+
+html { background: var(--pumice); }
+
+body {
+  background: var(--pumice);
+  color: var(--obsidian);
+  font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* DM Sans is only loaded in Medium, so bold utilities must not fake a heavier weight. */
+.font-bold, strong, b { font-weight: 500 !important; }
+
+::selection { background: var(--ember); color: var(--obsidian); }
+
+@layer components {
+  .display, .display-md, .display-sm, .h3 {
+    font-family: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+    font-weight: 400 !important;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .display { line-height: 0.94; font-size: clamp(64px, 12vw, 189px); }
+  .display-md { line-height: 0.95; font-size: clamp(48px, 7vw, 96px); }
+  .display-sm { line-height: 1; font-size: clamp(40px, 5vw, 64px); }
+  .h3 { line-height: 1; font-size: 32px; }
+
+  .card { background: var(--limestone); border-radius: 40px; padding: 28px; }
+  @media (min-width: 768px) { .card { padding: 40px; } }
+  .card-sm { background: var(--limestone); border-radius: 24px; padding: 20px; }
+  .card-ember { background: var(--ember); color: #fff; border-radius: 40px; padding: 28px; }
+  .card-dark { background: var(--obsidian); color: #fff; border-radius: 40px; padding: 28px; }
+  @media (min-width: 768px) { .card-ember, .card-dark { padding: 40px; } }
+
+  /* Signature halftone: orange dots over a violet to ember gradient */
+  .halftone {
+    background:
+      radial-gradient(circle at center, rgba(252, 80, 0, 0.95) 2.4px, transparent 2.9px) 0 0 / 14px 14px,
+      linear-gradient(135deg, #524ae9 35%, #fc5000 100%);
+    border-radius: 40px;
+    color: #fff;
+  }
+
+  .dots { border-top: 1.5px dotted var(--obsidian); }
+
+  .label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1.5px solid var(--obsidian);
+    border-radius: 800px;
+    font-size: 16px;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+  }
+  .btn:hover { background: var(--obsidian); color: #fff; transform: translateY(-1px); }
+  .btn-solid { background: var(--ember); border-color: var(--ember); color: var(--obsidian); }
+  .btn-solid:hover { background: var(--obsidian); border-color: var(--obsidian); color: #fff; }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+  /* On the black card the normal hover (black fill) would make the button vanish */
+  .card-dark .btn-solid:hover { background: #fff; border-color: #fff; color: var(--obsidian); }
+
+  .tag {
+    display: inline-block;
+    margin: 0 6px 6px 0;
+    padding: 4px 10px;
+    border-radius: 800px;
+    background: var(--sulfur);
+    font-size: 14px;
+  }
+  .arrow-link { border-bottom: 2px solid var(--ember); }
+  .arrow-link:hover { background: var(--ember); }
+
+  .pill-input {
+    width: 100%;
+    background: var(--limestone);
+    border: 1.5px solid var(--obsidian);
+    border-radius: 100px;
+    padding: 18px 28px;
+    font-size: 18px;
+    outline: none;
+  }
+  .pill-input:focus { border-color: var(--ember); }
+  .pill-input::placeholder { color: rgba(7, 6, 7, 0.4); }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+.rise { animation: rise 0.5s ease-out both; }
+.blink { animation: blink 1.2s infinite; }

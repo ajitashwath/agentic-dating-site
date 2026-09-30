@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+httpx
+# Gemini is called over plain HTTP with httpx
+python-dotenv
