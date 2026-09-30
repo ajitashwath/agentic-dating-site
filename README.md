@@ -40,7 +40,7 @@ The pipeline (`backend/run_pipeline.py`):
 1. Scrapes each person in `candidates.py` (LinkedIn and Instagram) with Apify.
 2. Verifies identity: LinkedIn name and Instagram name must match the person, the Instagram must be public with a real audience. Anyone who fails is dropped and reported. At least 25 must survive.
 3. Has an LLM read only those two sources and write the profile: needs, interests, hobbies, values, personality, lifestyle, communication style, career orientation, dating preferences, plus cited evidence.
-4. Runs every pair as a real date: two agent prompts take turns for 8 turns. Each agent only knows its own person plus what the other agent said. A judge call writes the verdict.
+4. Runs pairs as real dates, best matches first, until the Gemini quota or the time budget runs out: two agent prompts take turns for 8 turns. Each agent only knows its own person plus what the other agent said. A judge call writes the verdict.
 5. Ranks everyone with deterministic scoring and writes short LLM explanations for each top 10.
 
 Results land in `backend/data/*.json` and every API call is cached in `backend/data/cache`, so a crash resumes. The site only reads those JSON files, so browsing never calls Apify or Gemini. `--people 30` and `--dates 6` limit cost for a test run. `--fast` writes each date in one Gemini call instead of one per turn, which is much cheaper on a free-tier key.

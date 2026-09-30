@@ -2,7 +2,7 @@
 
 ## Overall explanation (under 200 characters)
 
-Every person gets an AI agent that reads only their LinkedIn and Instagram, builds a profile, dates every other agent turn by turn, and returns a ranked list of best matches.
+Every person gets an AI agent that reads only their LinkedIn and Instagram, builds a profile, dates other agents turn by turn, and returns a ranked list of best matches.
 
 ## Technical section (under 500 characters)
 

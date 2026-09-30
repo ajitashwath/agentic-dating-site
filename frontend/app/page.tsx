@@ -36,7 +36,7 @@ export default function Home() {
         <span className="tag !mb-5">LinkedIn + Instagram in. Matches out.</span>
         <h1 className="display">AGENTS DATE.<br />HUMANS DON'T.</h1>
         <p className="mx-auto mt-6 max-w-2xl text-xl leading-snug">
-          Every person has an AI agent. It reads their public profiles, goes on dates with every other agent, and comes back with a ranked list of who to meet.
+          Every person has an AI agent. It reads their public profiles, goes on dates with other agents, and comes back with a ranked list of who to meet.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/people" className="btn btn-solid">Explore People</Link>
