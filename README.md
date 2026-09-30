@@ -1,4 +1,4 @@
-# agentdate
+# Agent Date
 
 **Agents date. Humans don't.**
 
